@@ -9,16 +9,13 @@ dotenv.config();
 const app = express();
 
 // CORS configuration
-// const corsOptions = {
-//     origin: "http://localhost:5173", // Frontend origin
-//     methods: "GET, POST, PATCH, PUT, DELETE, HEAD",
-//     credentials: true, // Allow cookies
-// };
-app.use(cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-}))
-// app.use(cors(corsOptions));
+const corsOptions = {
+    origin: "http://localhost:5173", // Frontend origin
+    methods: "GET, POST, PATCH, PUT, DELETE, HEAD",
+    credentials: true, // Allow cookies
+};
+
+app.use(cors(corsOptions));
 
 // Middleware for parsing JSON (limit added to prevent abuse)
 app.use(express.json({ limit: "16kb" }));
